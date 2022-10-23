@@ -14,11 +14,6 @@ contract BootcampContract {
     }
 
     function retrieve() public view returns (address){
-        if (msg.sender != deployer){
-            return deployer;
-        }
-        else {
-            return burnAddress;
-        }
+        return (msg.sender != deployer) ? deployer : burnAddress;
     }
 }
