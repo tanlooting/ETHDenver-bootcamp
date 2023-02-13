@@ -5,21 +5,21 @@ pragma solidity ^0.8.0;
 /// @author looting
 /// ETHDenver Encode bootcamp Wk1 - HW4
 contract VolcanoCoin {
-    uint256 public totalSupply;
-    address public owner; // payable?
-    mapping(address => uint256) public balance; // balance of each user
+    
     struct Payment {
         address addr;
         uint256 amount;
     }
+    uint256 public totalSupply = 10000;
+    address public owner;
 
+    mapping(address => uint256) public balance; // balance of each user
     mapping(address=>Payment[]) public ledger;
 
     event NewTotalSupply(uint256);
     event Transaction(uint256, address, address);
 
     constructor(){
-        totalSupply = 10000;
         owner = msg.sender;
         balance[owner] = totalSupply;
     }
@@ -30,10 +30,9 @@ contract VolcanoCoin {
         }
     }
 
-    // only contract owner can add supply
     function addSupply() public onlyOwner {
         totalSupply += 1000;
-        emit NewTotalSupply(totalSupply); // emit when totalSupply is changed.
+        emit NewTotalSupply(totalSupply);
     }
 
     function getSupply() public view returns (uint256){

@@ -5,8 +5,8 @@ pragma solidity 0.8.17;
 
 contract BootcampContract {
 
-    address public deployer;
-    address public burnAddress = 0x000000000000000000000000000000000000dEaD;
+    address deployer;
+    address burnAddress = address(0x000000000000000000000000000000000000dEaD);
     
     // update the variable with the deployer's address when the contract is deployed
     constructor(){
