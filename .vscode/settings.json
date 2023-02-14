@@ -1,3 +1,7 @@
 {
-    "solidity.defaultCompiler": "localFile"
+  "[solidity]": {
+    "editor.defaultFormatter": "NomicFoundation.hardhat-solidity",
+  },
+  "solidity.packageDefaultDependenciesContractsDirectory": "",
+  "solidity.packageDefaultDependenciesDirectory": "node_modules"
 }

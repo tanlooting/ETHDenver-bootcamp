@@ -4,28 +4,24 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @author looting
-/// ETHDenver Encode bootcamp Wk1 - HW4
 contract VolcanoCoin is Ownable{
     
-    uint256 public totalSupply;
-    mapping(address => uint256) public balance; // balance of each user
     struct Payment {
         address addr;
         uint256 amount;
     }
 
+    uint256 public totalSupply = 10000;
+    mapping(address => uint256) public balance; 
     mapping(address=>Payment[]) public ledger;
 
     event NewTotalSupply(uint256);
     event Transaction(uint256, address, address);
 
     constructor(){
-        totalSupply = 10000;
         balance[owner()] = totalSupply;
     }
 
-    
     function addSupply() public onlyOwner {
         /// only contract owner can add supply
         totalSupply += 1000;

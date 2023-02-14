@@ -7,15 +7,12 @@ import "forge-std/Test.sol";
 import "../src/VolcanoCoin.sol";
 
 contract VolcanoCointest is Test {
-
     VolcanoCoin public volcanoCoin;
     address owner;
 
     function setUp() public {
-        /// runs before every unit test?
         vm.startPrank(owner);
         volcanoCoin = new VolcanoCoin();
-       
     }
 
     function testInitialSupply() public {
@@ -39,16 +36,9 @@ contract VolcanoCointest is Test {
         /// only owner of contract can increase the supply
     }
 
-    function testExample() public {
-       bool testPassed = true ;// testing 
-       assertTrue(testPassed);
-    }
-
-    function testTransfer() public{
+    function testTransfer() public {
         volcanoCoin.transfer(100, address(666));
         assertEq(volcanoCoin.getBalance(address(666)), 100);
         assertEq(volcanoCoin.getBalance(owner), 9900);
-    
     }
-
 }
